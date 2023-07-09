@@ -1,3 +1,5 @@
+
+{{ if eq $suite "focal" }}
   - action: apt
     description: Ubuntu20 lib
     packages: [
@@ -6,3 +8,13 @@
         libpcap0.8, libaudit1, libnotify4, libc6, libjson-c4, libjson-c-dev,
         libgtest-dev, libgcc1, libstdc++6, libmraa ]
 
+{{ else if eq $suite "lunar" }}
+  - action: apt
+    description: Ubuntu 23-04 lib
+    packages: [
+        gstreamer1.0-x, gstreamer1.0-plugins-base, gstreamer1.0-plugins-good,
+        gstreamer1.0-plugins-bad, gstreamer1.0-plugins-ugly, libxml2,
+        libpcap0.8, libaudit1, libnotify4, libc6, libjson-c5, libjson-c-dev,
+        libgtest-dev, libgcc-s1, libstdc++6 ]
+
+{{ end }}

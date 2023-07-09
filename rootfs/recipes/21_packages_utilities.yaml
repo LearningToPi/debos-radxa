@@ -1,7 +1,12 @@
   - action: apt
     description: Utilities
     packages: [
-        adduser, apt, apt-transport-https, debsums, e2fsprogs, fake-hwclock,
+{{ if eq $suite "lunar" }}
+
+         zram-config, zram-tools, gpiod,  # systemd-zram-generator - need to install on first boot
+{{ end }}
+    
+            adduser, apt, apt-transport-https, debsums, e2fsprogs, fake-hwclock,
         gdisk, ifupdown, kmod, netbase, parted, pciutils, psmisc,
         software-properties-common, sudo, sysstat, systemd, systemd-sysv,
         udev, u-boot-tools,

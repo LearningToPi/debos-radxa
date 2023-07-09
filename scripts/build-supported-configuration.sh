@@ -6,7 +6,7 @@ TOP_DIR=$(realpath $SCRIPTS_DIR/..)
 echo "TOP DIR = $TOP_DIR"
 
 board_list=("radxa-cm3-io" "radxa-e23" "radxa-e25" "radxa-nx5" "radxa-zero" "radxa-zero2" "rockpi-4b" "rock-4c-plus" "rock-3a" "rock-3b" "rock-3c" "rock-5a" "rock-5b" )
-model_list=("debian" "ubuntu")
+model_list=("debian" "ubuntu" "ubuntu-focal" "ubuntu-jammy" "ubuntu-focal")
 variant_list=("xfce4" "server")
 
 usage() {
@@ -108,9 +108,22 @@ case $MODEL in
                 ;;
         esac
         ;;
-    ubuntu)
-        DISTRO="focal"
+    ubuntu-lunar)
+	    DISTRO="lunar" # orig: "focal" (22.04), "lunar" (23.04)
+	    MODEL="ubuntu"
         ;;
+    ubuntu-jammy)
+	    DISTRO="jammy"
+	    MODEL="ubuntu"
+	;;
+    ubuntu-focal)
+	    DISTRO="focal"
+	    MODEL="ubuntu"
+	;;
+    ubuntu)
+	    DISTRO="focal"
+	    MODEL="ubuntu"
+	;;
     *)
         echo "Unsupported model $MODEL!"
         exit 4

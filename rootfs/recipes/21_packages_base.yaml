@@ -1,8 +1,7 @@
   - action: apt
     description: Base
     packages: [
-        sudo, systemd, systemd-sysv, gdisk, parted, u-boot-tools,
-
+        sudo, gdisk, parted, u-boot-tools,
         linux-base,
 
         initramfs-tools, util-linux, rfkill, file, findutils,
@@ -19,4 +18,4 @@
         i2c-tools,
 
         resize-assistant ]
-
+        # systemd systemd-sysv

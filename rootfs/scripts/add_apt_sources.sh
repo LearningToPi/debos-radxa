@@ -55,7 +55,7 @@ deb http://security.debian.org/debian-security ${SUITE}-security main contrib no
 EOF
 ;;
 
-xenial|bionic|eoan|focal)
+xenial|bionic|eoan|focal|jammy|lunar)
 cat <<-EOF > /etc/apt/sources.list
 deb http://${UBUNTU_MIRROR} ${SUITE} main restricted universe multiverse
 #deb-src http://${UBUNTU_MIRROR} ${SUITE} main restricted universe multiverse

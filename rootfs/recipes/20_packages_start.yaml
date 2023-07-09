@@ -9,10 +9,11 @@
     command: |
       set -e
 
-      echo "deb http://apt.radxa.com/{{$suite}}-stable/ {{$suite}} main" | tee -a /etc/apt/sources.list.d/apt-radxa-com.list
-      echo "#deb http://apt.radxa.com/{{$suite}}-testing/ {{$suite}} main" | tee -a /etc/apt/sources.list.d/apt-radxa-com.list
+       # changed {{$suite}} to "focal".  Radxa doesn't have a lunar repo
+      echo "deb http://apt.radxa.com/focal-stable/ focal main" | tee -a /etc/apt/sources.list.d/apt-radxa-com.list
+      echo "#deb http://apt.radxa.com/focal-testing/ focal main" | tee -a /etc/apt/sources.list.d/apt-radxa-com.list
 
-      wget -O - apt.radxa.com/{{$suite}}-stable/public.key | apt-key add -
+      wget -O - apt.radxa.com/focal-stable/public.key | apt-key add -
 
 
 {{ if eq $cpu "s905y2" }}

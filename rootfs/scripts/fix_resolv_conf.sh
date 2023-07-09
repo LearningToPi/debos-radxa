@@ -10,9 +10,10 @@ fi
 # Overwrite resolv.conf
 rm -rf /etc/resolv.conf
 cat > /etc/resolv.conf <<EOF
-search lan
-nameserver 8.8.8.8
+nameserver 127.0.0.53
 EOF
+#search lan
+#nameserver 8.8.8.8
 
 echo "I: show /etc/resolv.conf"
 cat /etc/resolv.conf
