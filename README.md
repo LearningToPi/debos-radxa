@@ -1,3 +1,21 @@
+# debos-radxa - Fork for Ubuntu 22.04 / 23.04
+
+Fork git: https://github.com/LearningToPi/debos-radxa
+
+Original git: https://github.com/radxa/debos-radxa
+
+
+## edits in this fork:
+ - Added jammy and lunar scipts
+ - fixed 'first_boot' script to prevent editing /etc/resolv.conf
+ - added loop in 'first_boot' to install packages on first boot (needed for ZRAM)
+ - added 'timesyncd.conf' to /etc/systemd/ - populated with North America pool.ntp.org
+ - updated recipe files to support changes for jammy / lunar
+ - added script to remove ssh keys (so you don't have matching keys on every system you image)
+ 
+
+------------------------------------------------
+
 # debos-radxa
 
 ## Introduction
