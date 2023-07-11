@@ -12,7 +12,16 @@ Original git: https://github.com/radxa/debos-radxa
  - added 'timesyncd.conf' to /etc/systemd/ - populated with North America pool.ntp.org
  - updated recipe files to support changes for jammy / lunar
  - added script to remove ssh keys (so you don't have matching keys on every system you image)
- 
+
+NOTE:  This requires the use of our fork of debos (https://github.com/LearningToPi/debos) which is available on Docker Hub (https://hub.docker.com/r/learningtopi/debos).  The main debos image still runs Debian 10 (bullseye).  This causes errors when building with Ubuntu 22.04 LTS (jammy) or 23.04 (lunar).  My fork of debos updates the image to run Debian 12 (bookworm) which allows the build of jammy and lunar images.
+
+The build-os.sh script has been updated to include "ubuntu", "ubuntu-focal", "ubuntu-jammy" and "ubuntu-lunar" as distro options.  If you use "ubuntu" it will default to "ubuntu-focal".  use "ubuntu-jammy" or "ubuntu-lunar" for 22.04 LTS or 23.04.
+
+<pre>
+docker run --rm --interactive --tty -v /dev/shm --tmpfs /dev/shm:rw,nosuid,nodev,exec,size=4g --user $(id -u) --security-opt label=disable --workdir $PWD --mount "type=bind,source=$PWD,destination=$PWD" --device /dev/kvm --entrypoint ./build-os.sh learningtopi/debos -b rock-5b -m ubuntu-lunar -v server 
+</pre>
+
+NOTE:  This has been tested on the Rock 5B.  If you experience issues with a different Radxa platform, please feel free to open an issue and provide a log showing the error.  Be sure to include which platform you are building for.
 
 ------------------------------------------------
 
@@ -107,7 +116,7 @@ Variant list:
 
 ### Build system image
 
-#### Exanple: Build ROCK 5B Debian11 Xfce4 image
+#### Example: Build ROCK 5B Debian11 Xfce4 image
 
 <pre>
 radxa@x86-64:~$ cd ~/debos-radxa/
